@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menghitung Grade Nilai</title>
+    <style>
+      html {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .box {
+        margin-left: 15rem;
+        display: inline-block;
+        width: 50%;
+        border-radius: 5px;
+        border: 1px solid #9b9b9b;
+
+        padding: 20px 20px 20px 10px;
+        box-shadow: 0px 0px 10px #9b9b9b;
+      }
+      button {
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 0px;
+        color: #fff;
+        background: #3b7fff;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        font-size: 16px;
+      }
+      input[type="number"] {
+        padding: 10px;
+        width: 100px;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+      }
+      label {
+        font-size: 16px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Kalkulator Grade Nilai</h1>
+      <p>
+        Masukkan nilai siswa (0-100) dan klik "Hitung Grade" untuk melihat grade
+        yang sesuai.
+      </p>
+      <label for="score">Nilai:</label>
+      <input type="number" id="score" min="0" max="100" step="0.1" />
+      <button onclick="calculateGrade()">Hitung Grade</button>
+      <div id="result"></div>
+    </div>
+    <script>
+      function calculateGrade() {
+        var score = parseFloat(document.getElementById("score").value);
+        if (isNaN(score) || score < 0 || score > 100) {
+          document.getElementById("result").innerHTML =
+            "Masukkan nilai yang valid antara 0 dan 100.";
+        } else {
+          var grade;
+          switch (true) {
+            case score < 60:
+              grade = "F";
+              break;
+            case score < 70:
+              grade = "D";
+              break;
+            case score < 80:
+              grade = "C";
+              break;
+            case score < 90:
+              grade = "B";
+              break;
+            default:
+              grade = "A";
+          }
+          document.getElementById("result").innerHTML =
+            "Untuk nilai " + score + ", grade-nya adalah " + grade + ".";
+        }
+      }
+    </script>
+  </body>
+</html>
